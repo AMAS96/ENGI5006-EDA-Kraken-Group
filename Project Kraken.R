@@ -119,7 +119,7 @@ print(max_temperature_years)
 Kraken_Rainfall_Annual %>%
   filter(`Rainfall (mm)` >0) %>%
   ggplot(aes(sample = `Rainfall (mm)`)) +
-  stat_qq(color = "steelblue")+
+  stat_qq(color = "black")+
   stat_qq_line(color = "red")+
   facet_wrap(~Station)+ #TO Merge all in one plot
   labs(x = "Theoretical", y = "Sample", title = "Normal QQ Plot: Annual Rainfall")+
@@ -128,7 +128,7 @@ Kraken_Rainfall_Annual %>%
 # TEMPERATURE
 Kraken_Temperature_Annual %>%
   ggplot(aes(sample = `Mean Max Temperature (C)`)) +
-  stat_qq(color = "steelblue")+
+  stat_qq(color = "black")+
   stat_qq_line(color = "red")+
   stat_qq_line(distribution = stats::qnorm, color = "red") + 
   stat_qq(distribution = stats::qnorm)+
@@ -255,6 +255,6 @@ Kraken_Combined <- inner_join(Kraken_Rainfall_Annual, Kraken_Temperature_Annual,
 ggplot(Kraken_Combined, aes(x = `Mean Max Temperature (C)`, y = `Rainfall (mm)`))+
   geom_point()+
   annotate("text", x = 26.5, y= 650, label = "r = -0.848",
-           fontface = "italic")
+           size = 15, fontface = "italic")
 
   
